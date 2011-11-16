@@ -1,0 +1,21 @@
+<%-
+
+ if has_variable?('mcmem') then
+   size = mcmem
+ else
+   size = scope.lookupvar('global::vars::mc_cache_size')
+ end
+
+ if has_variable?('mcport') then
+   port = mcport
+ else
+   port = scope.lookupvar('global::vars::mc_listen_port')
+ end
+
+ daemon = scope.lookupvar('memcache::vars::mc_daemon_name')
+ username = scope.lookupvar('memcache::vars::mc_owner')
+
+-%>
+<%= daemon -%>_enable="YES"
+<%= daemon -%>_flags="-m <%= size -%> -p <%= port -%> -U <%= port -%>"
+<%= daemon -%>_user="<%= username -%>"
