@@ -5,14 +5,14 @@ puppet-memcache - puppet classes to help manage memcached instances.
 
 Usage
 -----
-    node /mc\d{2}.example.com {
-      $mcmem = '64M'
+    node /^mc\d{2}.example.com$/ {
+      $mcmem = '64'
       include memcache
     }
     
 Variables
 ---------
-* `$mcmem` cache size (will be replaced by `$global::vars::mc_cache_size` if ommited)
+* `$mcmem` cache size in MiB (will be replaced by `$global::vars::mc_cache_size` if ommited)
 * `$mcport` memcache daemon listen port (will be replaced by `$global::vars::mc_listen_port` if ommited)
 
 Author
